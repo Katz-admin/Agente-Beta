@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karen Pineda — Commercial Operations &amp; Strategic Insights</title>
+  <meta name="description" content="Karen Pineda — 8+ años transformando datos operativos en decisiones que mueven el negocio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ================================================================
+       RESET & CSS VARIABLES
+    ================================================================ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0a0a0f;
+      --surface:#111118;
+      --accent:#c9a84c;
+      --accent-dim:rgba(201,168,76,.12);
+      --accent-border:rgba(201,168,76,.35);
+      --text:#e8e8f0;
+      --muted:#8888a0;
+      --border:rgba(255,255,255,.08);
+      --radius:12px;
+      --radius-sm:8px;
+      --nav-h:64px;
+      --ease:cubic-bezier(.25,.46,.45,.94);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      font-weight:400;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    ::selection{background:var(--accent);color:#000}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+    img,svg{display:block}
+    a{color:inherit}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:4px}
+
+    /* ================================================================
+       UTILITY
+    ================================================================ */
+    .container{width:100%;max-width:1100px;margin:0 auto;padding:0 1.25rem}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;clip-path:inset(50%)}
+
+    /* ================================================================
+       REVEAL ANIMATIONS
+    ================================================================ */
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .65s var(--ease),transform .65s var(--ease);
+    }
+    .reveal.in-view{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:.08s}
+    .reveal-d2{transition-delay:.16s}
+    .reveal-d3{transition-delay:.24s}
+    .reveal-d4{transition-delay:.32s}
+
+    /* ================================================================
+       NAV
+    ================================================================ */
+    #main-nav{
+      position:fixed;top:0;left:0;right:0;
+      z-index:200;
+      height:var(--nav-h);
+      background:rgba(10,10,15,.82);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+      transition:background .3s ease;
+    }
+    #main-nav .container{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.5rem;
+    }
+    .nav-logo{
+      font-size:1.25rem;font-weight:700;
+      letter-spacing:.1em;
+      color:var(--accent);
+      text-decoration:none;
+      flex-shrink:0;
+      transition:opacity .25s ease;
+    }
+    .nav-logo:hover{opacity:.8}
+    .nav-links{
+      display:none;
+      list-style:none;
+      gap:2rem;
+    }
+    .nav-links a{
+      font-size:.8rem;font-weight:500;
+      letter-spacing:.06em;
+      color:var(--muted);
+      text-decoration:none;
+      position:relative;
+      padding-bottom:3px;
+      transition:color .3s ease;
+    }
+    .nav-links a::after{
+      content:'';
+      position:absolute;bottom:0;left:0;
+      width:0;height:1.5px;
+      background:var(--accent);
+      transition:width .3s var(--ease);
+      border-radius:2px;
+    }
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{width:100%}
+    .nav-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+    .lang-btn{
+      font-family:'Inter',sans-serif;
+      font-size:.75rem;font-weight:600;
+      letter-spacing:.1em;
+      color:var(--accent);
+      background:transparent;
+      border:1px solid var(--accent-border);
+      border-radius:20px;
+      padding:.32rem .9rem;
+      cursor:pointer;
+      transition:background .25s ease,transform .25s ease,box-shadow .25s ease;
+    }
+    .lang-btn:hover{background:var(--accent-dim);transform:scale(1.04);box-shadow:0 0 12px rgba(201,168,76,.2)}
+    .hamburger{
+      display:flex;flex-direction:column;gap:5px;
+      background:none;border:none;cursor:pointer;padding:5px;
+    }
+    .hamburger span{
+      display:block;width:22px;height:2px;
+      background:var(--text);border-radius:2px;
+      transition:all .3s var(--ease);
+    }
+
+    /* ================================================================
+       MOBILE DRAWER
+    ================================================================ */
+    #mobile-drawer{
+      position:fixed;top:var(--nav-h);left:0;right:0;
+      background:rgba(17,17,24,.97);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+      padding:1.5rem 1.25rem 2rem;
+      transform:translateY(-110%);
+      transition:transform .35s var(--ease);
+      z-index:199;
+    }
+    #mobile-drawer.open{transform:translateY(0)}
+    #mobile-drawer ul{list-style:none;display:flex;flex-direction:column;gap:0}
+    #mobile-drawer li a{
+      display:block;
+      font-size:1rem;font-weight:500;
+      color:var(--text);
+      text-decoration:none;
+      padding:.85rem 0;
+      border-bottom:1px solid var(--border);
+      transition:color .25s ease;
+    }
+    #mobile-drawer li a:hover{color:var(--accent)}
+
+    /* ================================================================
+       HERO
+    ================================================================ */
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      padding:var(--nav-h) 1.25rem 4rem;
+    }
+    .hero-parallax{
+      position:absolute;inset:-30%;
+      pointer-events:none;
+      will-change:transform;
+    }
+    .hero-glow{
+      position:absolute;top:35%;left:50%;
+      transform:translate(-50%,-50%);
+      width:700px;height:500px;
+      background:radial-gradient(ellipse at center,rgba(201,168,76,.09) 0%,rgba(201,168,76,.03) 45%,transparent 70%);
+      filter:blur(2px);
+    }
+    .hero-glow2{
+      position:absolute;top:70%;left:20%;
+      width:400px;height:400px;
+      background:radial-gradient(ellipse at center,rgba(100,80,200,.05) 0%,transparent 65%);
+    }
+    .hero-grid{
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+      background-size:64px 64px;
+      mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black 20%,transparent 75%);
+    }
+    .hero-content{position:relative;z-index:2;max-width:860px}
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:.6rem;
+      font-size:.7rem;font-weight:600;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--accent);
+      background:rgba(201,168,76,.08);
+      border:1px solid rgba(201,168,76,.25);
+      border-radius:20px;
+      padding:.38rem 1.1rem;
+      margin-bottom:2rem;
+      animation:fadeUp .8s var(--ease) .15s both;
+    }
+    .hero-name{
+      font-size:clamp(3.2rem,9vw,6rem);
+      font-weight:700;
+      letter-spacing:-.02em;
+      line-height:1.04;
+      margin-bottom:1.2rem;
+      background:linear-gradient(155deg,#fff 0%,#e8e8f0 55%,#aaaacc 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      animation:fadeUp .8s var(--ease) .3s both;
+    }
+    .hero-headline{
+      font-size:clamp(1.05rem,2.8vw,1.5rem);
+      font-weight:400;letter-spacing:.04em;
+      color:var(--muted);
+      margin-bottom:1rem;
+      animation:fadeUp .8s var(--ease) .45s both;
+    }
+    .hero-headline .arrow{color:var(--accent);font-weight:600}
+    .hero-sub{
+      font-size:clamp(.9rem,2vw,1.05rem);
+      font-weight:300;color:var(--muted);
+      line-height:1.75;
+      max-width:540px;margin:0 auto 2.8rem;
+      animation:fadeUp .8s var(--ease) .6s both;
+    }
+    .hero-cta{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:var(--accent);color:#000;
+      font-family:'Inter',sans-serif;
+      font-size:.88rem;font-weight:600;letter-spacing:.05em;
+      text-decoration:none;
+      padding:.88rem 2.2rem;
+      border-radius:30px;border:none;cursor:pointer;
+      transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s ease;
+      animation:fadeUp .8s var(--ease) .75s both;
+    }
+    .hero-cta:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 35px rgba(201,168,76,.35);background:#d9ba62}
+    .hero-scroll-indicator{
+      position:absolute;bottom:2.5rem;left:50%;
+      transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:.5rem;
+      color:var(--muted);
+      animation:fadeIn 1s ease 1.4s both;
+    }
+    .hero-scroll-label{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+    .scroll-bar{
+      width:1px;height:42px;
+      background:linear-gradient(to bottom,var(--accent),transparent);
+      border-radius:2px;
+      animation:scrollAnim 2.2s ease-in-out infinite;
+    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:.6}}
+    @keyframes scrollAnim{
+      0%,100%{opacity:.3;transform-origin:top;transform:scaleY(.8)}
+      50%{opacity:1;transform:scaleY(1)}
+    }
+
+    /* ================================================================
+       SECTION BASE
+    ================================================================ */
+    .section-block{padding:6rem 0}
+    .section-eyebrow{
+      font-size:.68rem;font-weight:600;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:.6rem;
+    }
+    .section-heading{
+      font-size:clamp(1.7rem,4vw,2.6rem);
+      font-weight:700;letter-spacing:.02em;
+      line-height:1.15;color:var(--text);
+      margin-bottom:.75rem;
+    }
+    .section-rule{
+      width:44px;height:2px;
+      background:var(--accent);border-radius:2px;
+      margin-bottom:2.5rem;
+    }
+    .section-rule.centered{margin-left:auto;margin-right:auto}
+
+    /* ================================================================
+       ABOUT
+    ================================================================ */
+    #about{
+      background:var(--surface);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .about-inner{max-width:740px;margin:0 auto;text-align:center}
+    .about-text{
+      font-size:clamp(1.05rem,2.6vw,1.28rem);
+      font-weight:300;line-height:1.85;color:var(--text);
+    }
+    .about-text+.about-text{margin-top:1.4rem}
+    .about-text strong{color:var(--accent);font-weight:600}
+
+    /* ================================================================
+       SERVICES — FLIP CARDS
+    ================================================================ */
+    #services{background:var(--bg)}
+    .services-header{text-align:center}
+    .services-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.5rem;
+      margin-top:3rem;
+    }
+    .flip-card{perspective:1000px;height:264px;cursor:pointer}
+    .flip-card-inner{
+      position:relative;width:100%;height:100%;
+      transform-style:preserve-3d;
+      transition:transform .6s cubic-bezier(.4,.2,.2,1);
+    }
+    .flip-card-inner.flipped{transform:rotateY(180deg)}
+    .flip-front,.flip-back{
+      position:absolute;inset:0;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:2rem 1.75rem;text-align:center;
+      transition:border-color .35s ease;
+    }
+    .flip-front{background:var(--surface)}
+    .flip-back{
+      background:linear-gradient(145deg,var(--surface) 0%,rgba(201,168,76,.07) 100%);
+      border-color:var(--accent-border);
+      transform:rotateY(180deg);
+    }
+    .flip-card:hover .flip-front,
+    .flip-card:hover .flip-back{border-color:var(--accent-border)}
+    .flip-svg-icon{width:52px;height:52px;margin-bottom:1rem;color:var(--accent);flex-shrink:0}
+    .flip-card-label{font-size:.98rem;font-weight:600;letter-spacing:.02em;color:var(--text)}
+    .flip-hint{margin-top:.9rem;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.55}
+    .flip-back-body{font-size:.875rem;line-height:1.72;color:var(--muted)}
+    .flip-back-deliver{
+      margin-top:1rem;padding-top:.85rem;
+      border-top:1px solid rgba(201,168,76,.18);
+      width:100%;
+      font-size:.8rem;font-weight:600;color:var(--accent);line-height:1.5;
+    }
+
+    /* ================================================================
+       PROJECTS
+    ================================================================ */
+    #projects{
+      background:var(--surface);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .projects-header{text-align:center}
+    .projects-grid{
+      display:grid;grid-template-columns:1fr;
+      gap:1.5rem;margin-top:3rem;
+    }
+    .proj-card{
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:1.8rem;
+      display:flex;flex-direction:column;gap:.7rem;
+      transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s ease;
+    }
+    .proj-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 48px rgba(0,0,0,.45);
+      border-color:var(--accent-border);
+    }
+    .proj-num{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+    .proj-title{font-size:1.05rem;font-weight:600;letter-spacing:.02em;color:var(--text)}
+    .proj-desc{font-size:.875rem;color:var(--muted);line-height:1.7;flex:1}
+    .proj-tools{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
+    .tool-pill{
+      font-size:.7rem;font-weight:500;letter-spacing:.06em;
+      color:var(--accent);
+      background:var(--accent-dim);
+      border:1px solid var(--accent-border);
+      border-radius:20px;padding:.22rem .65rem;
+    }
+    .proj-link{
+      display:inline-flex;align-items:center;gap:.35rem;
+      font-size:.82rem;font-weight:500;letter-spacing:.04em;
+      color:var(--accent);text-decoration:none;margin-top:.4rem;
+      transition:opacity .25s ease,gap .25s ease;
+    }
+    .proj-link:hover{opacity:.75;gap:.55rem}
+
+    /* ================================================================
+       TIMELINE / EXPERIENCE
+    ================================================================ */
+    #experience{background:var(--bg)}
+    .experience-header{text-align:center}
+    .timeline{position:relative;margin-top:3.5rem}
+    .timeline::before{
+      content:'';position:absolute;
+      left:18px;top:0;bottom:0;width:1px;
+      background:linear-gradient(to bottom,transparent,var(--accent-border) 8%,var(--accent-border) 92%,transparent);
+    }
+    .tl-item{position:relative;padding-left:56px;margin-bottom:3rem}
+    .tl-item:last-child{margin-bottom:0}
+    .tl-dot{
+      position:absolute;left:11px;top:5px;
+      width:14px;height:14px;border-radius:50%;
+      background:var(--bg);border:2px solid var(--accent);
+      transition:background .3s ease,box-shadow .3s ease;
+    }
+    .tl-item:hover .tl-dot{background:var(--accent);box-shadow:0 0 0 4px rgba(201,168,76,.18)}
+    .tl-item.tl-current .tl-dot{
+      box-shadow:0 0 0 4px rgba(201,168,76,.16),0 0 14px rgba(201,168,76,.4);
+      animation:dotPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes dotPulse{
+      0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,.16),0 0 14px rgba(201,168,76,.3)}
+      50%{box-shadow:0 0 0 6px rgba(201,168,76,.08),0 0 22px rgba(201,168,76,.55)}
+    }
+    .tl-year{
+      font-size:.7rem;font-weight:700;letter-spacing:.14em;
+      color:var(--accent);text-transform:uppercase;
+      margin-bottom:.3rem;
+      display:flex;align-items:center;gap:.5rem;
+    }
+    .tl-badge{
+      display:inline-block;
+      font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+      color:#000;background:var(--accent);
+      border-radius:12px;padding:.15rem .5rem;
+    }
+    .tl-role{font-size:1rem;font-weight:600;letter-spacing:.02em;color:var(--text);margin-bottom:.25rem}
+    .tl-company{font-size:.82rem;color:var(--muted);margin-bottom:.55rem}
+    .tl-desc{font-size:.85rem;color:var(--muted);line-height:1.7}
+
+    /* ================================================================
+       CONTACT
+    ================================================================ */
+    #contact{background:var(--surface);border-top:1px solid var(--border)}
+    .contact-inner{max-width:580px;margin:0 auto;text-align:center}
+    .contact-header{margin-bottom:2.5rem}
+    .contact-list{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.8rem}
+    .contact-row{
+      display:flex;align-items:center;gap:1rem;
+      background:var(--bg);
+      border:1px solid var(--border);border-radius:var(--radius-sm);
+      padding:1rem 1.25rem;
+      text-decoration:none;color:var(--text);text-align:left;
+      transition:border-color .3s ease,transform .3s var(--ease),box-shadow .3s ease;
+    }
+    .contact-row:hover{border-color:var(--accent-border);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+    .contact-icon-wrap{
+      flex-shrink:0;width:40px;height:40px;
+      background:var(--accent-dim);
+      border:1px solid rgba(201,168,76,.18);
+      border-radius:var(--radius-sm);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--accent);transition:background .25s ease;
+    }
+    .contact-row:hover .contact-icon-wrap{background:rgba(201,168,76,.2)}
+    .contact-icon-wrap svg{width:18px;height:18px}
+    .contact-info-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.12rem}
+    .contact-info-value{font-size:.9rem;font-weight:500;color:var(--text)}
+    .contact-availability{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+    .avail-dot{
+      display:inline-block;width:7px;height:7px;border-radius:50%;
+      background:#4caf50;margin-right:.45rem;
+      animation:dotPulse 2.2s ease-in-out infinite;vertical-align:middle;
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    footer{
+      background:var(--bg);border-top:1px solid var(--border);
+      padding:1.75rem 1.25rem;text-align:center;
+      font-size:.76rem;color:var(--muted);letter-spacing:.05em;
+    }
+    footer .gold{color:var(--accent)}
+
+    /* ================================================================
+       RESPONSIVE — TABLET >= 768px
+    ================================================================ */
+    @media (min-width:768px){
+      .nav-links{display:flex}
+      .hamburger{display:none}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .projects-grid{grid-template-columns:1fr 1fr}
+
+      /* Desktop hover flip */
+      .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+
+      /* Alternating timeline */
+      .timeline::before{left:50%;transform:translateX(-50%)}
+      .tl-item{
+        width:50%;padding-left:0;
+        padding-right:3.5rem;text-align:right;
+      }
+      .tl-item:nth-child(even){
+        margin-left:50%;padding-right:0;padding-left:3.5rem;text-align:left;
+      }
+      .tl-dot{left:auto;right:-8px;top:5px}
+      .tl-item:nth-child(even) .tl-dot{left:-8px;right:auto}
+      .tl-item .tl-year{justify-content:flex-end}
+      .tl-item:nth-child(even) .tl-year{justify-content:flex-start}
+    }
+
+    /* ================================================================
+       RESPONSIVE — DESKTOP >= 1024px
+    ================================================================ */
+    @media (min-width:1024px){
+      .projects-grid{grid-template-columns:1fr 1fr 1fr}
+    }
+
+    /* ================================================================
+       PREFERS REDUCED MOTION
+    ================================================================ */
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal,.reveal.in-view{opacity:1;transform:none;transition:none}
+      .flip-card-inner,
+      .flip-card:hover .flip-card-inner,
+      .flip-card-inner.flipped{transition:none!important}
+      .hero-parallax{will-change:auto}
+      .hero-eyebrow,.hero-name,.hero-headline,.hero-sub,.hero-cta,.hero-scroll-indicator{
+        animation:none;opacity:1;transform:none;
+      }
+      .tl-item.tl-current .tl-dot,.avail-dot,.scroll-bar{animation:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     STICKY NAV
+============================================================ -->
+<nav id="main-nav" aria-label="Navegación principal">
+  <div class="container">
+    <a href="#hero" class="nav-logo" aria-label="Karen Pineda — Inicio">KP</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about"      data-i18n="nav_about">Sobre mí</a></li>
+      <li><a href="#services"   data-i18n="nav_services">Servicios</a></li>
+      <li><a href="#projects"   data-i18n="nav_projects">Proyectos</a></li>
+      <li><a href="#experience" data-i18n="nav_experience">Experiencia</a></li>
+      <li><a href="#contact"    data-i18n="nav_contact">Contacto</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-btn" aria-label="Cambiar idioma a inglés">EN</button>
+      <button class="hamburger" id="hamburger"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="mobile-drawer" role="dialog" aria-label="Menú de navegación">
+  <ul role="list">
+    <li><a href="#about"      data-i18n="nav_about"      class="drawer-link">Sobre mí</a></li>
+    <li><a href="#services"   data-i18n="nav_services"   class="drawer-link">Servicios</a></li>
+    <li><a href="#projects"   data-i18n="nav_projects"   class="drawer-link">Proyectos</a></li>
+    <li><a href="#experience" data-i18n="nav_experience" class="drawer-link">Experiencia</a></li>
+    <li><a href="#contact"    data-i18n="nav_contact"    class="drawer-link">Contacto</a></li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero" aria-labelledby="hero-name">
+  <div class="hero-parallax" id="parallax-layer" aria-hidden="true">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+  </div>
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Operaciones · Analítica · Estrategia</p>
+
+    <h1 class="hero-name" id="hero-name">Karen Pineda</h1>
+
+    <p class="hero-headline">
+      <span data-i18n="hero_hl_a">Operaciones Comerciales</span>
+      <span class="arrow"> → </span>
+      <span data-i18n="hero_hl_b">Insights Estratégicos</span>
+    </p>
+
+    <p class="hero-sub" data-i18n="hero_sub">
+      8+ años transformando datos operativos en decisiones que mueven el negocio
+    </p>
+
+    <a href="#contact" class="hero-cta" data-i18n="hero_cta">
+      Hablemos
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M3 7h8M7 3l4 4-4 4"
+              stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <span class="hero-scroll-label" data-i18n="hero_scroll">Scroll</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT / VALUE PROPOSITION
+============================================================ -->
+<section id="about" class="section-block" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-inner">
+      <div class="reveal">
+        <p class="section-eyebrow" data-i18n="about_eyebrow">Propuesta de Valor</p>
+        <h2 class="section-heading sr-only" id="about-heading" data-i18n="about_heading">Sobre mí</h2>
+        <div class="section-rule centered"></div>
+      </div>
+      <p class="about-text reveal reveal-d1" data-i18n="about_p1">
+        Combino experiencia en servicio al cliente, logística y exportaciones con una mentalidad analítica para detectar patrones donde otros ven ruido. No solo reporto datos — construyo <strong>frameworks</strong> que convierten <strong>insights en acción</strong>.
+      </p>
+      <p class="about-text reveal reveal-d2" data-i18n="about_p2">
+        Cada proyecto es una oportunidad de traducir <strong>complejidad operativa</strong> en estrategia clara y accionable para equipos y liderazgo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES — FLIP CARDS
+============================================================ -->
+<section id="services" class="section-block" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="services-header reveal">
+      <p class="section-eyebrow" data-i18n="services_eyebrow">Especialidades</p>
+      <h2 class="section-heading" id="services-heading" data-i18n="services_heading">Servicios</h2>
+      <div class="section-rule centered"></div>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Card 1: Commercial Analytics -->
+      <div class="flip-card reveal reveal-d1"
+           role="article" tabindex="0"
+           aria-label="Analítica Comercial — presiona Enter para ver detalle">
+        <div class="flip-card-inner" data-card>
+          <div class="flip-front">
+            <svg class="flip-svg-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+              <rect x="5"  y="30" width="9" height="16" rx="2" fill="currentColor" opacity=".35"/>
+              <rect x="17" y="20" width="9" height="26" rx="2" fill="currentColor" opacity=".6"/>
+              <rect x="29" y="10" width="9" height="36" rx="2" fill="currentColor" opacity=".85"/>
+              <rect x="41" y="4"  width="7" height="42" rx="2" fill="currentColor"/>
+              <path d="M8 28 L20 18 L32 8 L44 2"
+                    stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="flip-card-label" data-i18n="svc1_title">Analítica Comercial</p>
+            <p class="flip-hint" data-i18n="flip_hint">Hover para ver más</p>
+          </div>
+          <div class="flip-back" aria-hidden="true">
+            <p class="flip-back-body" data-i18n="svc1_back">
+              Diseño y automatizo reportes de KPIs comerciales, análisis de tendencias y forecasting.
+            </p>
+            <div class="flip-back-deliver" data-i18n="svc1_deliver">
+              Entregable: dashboards accionables que reducen tiempo de decisión.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Operations -->
+      <div class="flip-card reveal reveal-d2"
+           role="article" tabindex="0"
+           aria-label="Operaciones — presiona Enter para ver detalle">
+        <div class="flip-card-inner" data-card>
+          <div class="flip-front">
+            <svg class="flip-svg-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+              <circle cx="26" cy="26" r="8" stroke="currentColor" stroke-width="2.5"/>
+              <circle cx="26" cy="26" r="3.5" fill="currentColor"/>
+              <path d="M26 5v6M26 41v6M5 26h6M41 26h6"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M10.1 10.1l4.25 4.25M37.65 37.65l4.25 4.25M37.65 14.35l-4.25 4.25M14.35 37.65l-4.25 4.25"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <p class="flip-card-label" data-i18n="svc2_title">Operaciones</p>
+            <p class="flip-hint" data-i18n="flip_hint">Hover para ver más</p>
+          </div>
+          <div class="flip-back" aria-hidden="true">
+            <p class="flip-back-body" data-i18n="svc2_back">
+              Optimización de procesos en logística, exportaciones y soporte comercial.
+            </p>
+            <div class="flip-back-deliver" data-i18n="svc2_deliver">
+              Entregable: SOPs documentados y flujos mejorados.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Consumer Insights -->
+      <div class="flip-card reveal reveal-d3"
+           role="article" tabindex="0"
+           aria-label="Consumer Insights — presiona Enter para ver detalle">
+        <div class="flip-card-inner" data-card>
+          <div class="flip-front">
+            <svg class="flip-svg-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+              <circle cx="26" cy="18" r="9" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M8 44c0-9.941 8.059-18 18-18s18 8.059 18 18"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M38 24c3.866 0 7 3.134 7 7v2"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+              <circle cx="38" cy="17" r="5" stroke="currentColor" stroke-width="2" opacity=".4"/>
+              <path d="M14 24c-3.866 0-7 3.134-7 7v2"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+              <circle cx="14" cy="17" r="5" stroke="currentColor" stroke-width="2" opacity=".4"/>
+            </svg>
+            <p class="flip-card-label">Consumer Insights</p>
+            <p class="flip-hint" data-i18n="flip_hint">Hover para ver más</p>
+          </div>
+          <div class="flip-back" aria-hidden="true">
+            <p class="flip-back-body" data-i18n="svc3_back">
+              Análisis de comportamiento de cliente, segmentación y mapeo de experiencia.
+            </p>
+            <div class="flip-back-deliver" data-i18n="svc3_deliver">
+              Entregable: estrategias centradas en el cliente con evidencia cuantitativa.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Decision Frameworks -->
+      <div class="flip-card reveal reveal-d4"
+           role="article" tabindex="0"
+           aria-label="Frameworks de Decisión — presiona Enter para ver detalle">
+        <div class="flip-card-inner" data-card>
+          <div class="flip-front">
+            <svg class="flip-svg-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+              <path d="M26 6C17.163 6 10 13.163 10 22c0 5.3 2.6 10 6.6 12.9L18 37h16l1.4-2.1C39.4 32 42 27.3 42 22 42 13.163 34.837 6 26 6z"
+                    stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M20 37v4a2 2 0 002 2h8a2 2 0 002-2v-4" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M26 14v8M23 17l3-3 3 3"
+                    stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="flip-card-label" data-i18n="svc4_title">Frameworks de Decisión</p>
+            <p class="flip-hint" data-i18n="flip_hint">Hover para ver más</p>
+          </div>
+          <div class="flip-back" aria-hidden="true">
+            <p class="flip-back-body" data-i18n="svc4_back">
+              Estructuro ambigüedad en modelos claros de priorización y análisis.
+            </p>
+            <div class="flip-back-deliver" data-i18n="svc4_deliver">
+              Entregable: playbooks y matrices de decisión usados por equipos.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /services-grid -->
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+============================================================ -->
+<section id="projects" class="section-block" aria-labelledby="projects-heading">
+  <div class="container">
+    <div class="projects-header reveal">
+      <p class="section-eyebrow" data-i18n="proj_eyebrow">Trabajo Selecto</p>
+      <h2 class="section-heading" id="projects-heading" data-i18n="proj_heading">Proyectos</h2>
+      <div class="section-rule centered"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="proj-card reveal reveal-d1">
+        <p class="proj-num">01</p>
+        <h3 class="proj-title" data-i18n="p1_title">Dashboard Comercial</h3>
+        <p class="proj-desc"   data-i18n="p1_desc">
+          Diseño e implementación de dashboard interactivo para seguimiento de KPIs comerciales en tiempo real.
+        </p>
+        <div class="proj-tools">
+          <span class="tool-pill">Google Sheets</span>
+          <span class="tool-pill">Looker Studio</span>
+        </div>
+        <a href="#" class="proj-link" data-i18n="proj_link_label" aria-label="Ver proyecto Dashboard Comercial">
+          [Ver proyecto]
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M2 9L9 2M9 2H4M9 2v5"
+                  stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="proj-card reveal reveal-d2">
+        <p class="proj-num">02</p>
+        <h3 class="proj-title" data-i18n="p2_title">Análisis de Exportaciones</h3>
+        <p class="proj-desc"   data-i18n="p2_desc">
+          Análisis de flujos de exportación y optimización de procesos de documentación y cumplimiento.
+        </p>
+        <div class="proj-tools">
+          <span class="tool-pill">Excel</span>
+          <span class="tool-pill">Power BI</span>
+        </div>
+        <a href="#" class="proj-link" data-i18n="proj_link_label" aria-label="Ver proyecto Análisis de Exportaciones">
+          [Ver proyecto]
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M2 9L9 2M9 2H4M9 2v5"
+                  stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="proj-card reveal reveal-d3">
+        <p class="proj-num">03</p>
+        <h3 class="proj-title" data-i18n="p3_title">Reporte de Insights</h3>
+        <p class="proj-desc"   data-i18n="p3_desc">
+          Automatización de reportes mensuales de insights de cliente con visualizaciones ejecutivas.
+        </p>
+        <div class="proj-tools">
+          <span class="tool-pill">Python</span>
+          <span class="tool-pill">Google Data Studio</span>
+        </div>
+        <a href="#" class="proj-link" data-i18n="proj_link_label" aria-label="Ver proyecto Reporte de Insights">
+          [Ver proyecto]
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M2 9L9 2M9 2H4M9 2v5"
+                  stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TIMELINE / EXPERIENCE
+============================================================ -->
+<section id="experience" class="section-block" aria-labelledby="exp-heading">
+  <div class="container">
+    <div class="experience-header reveal">
+      <p class="section-eyebrow" data-i18n="exp_eyebrow">Trayectoria</p>
+      <h2 class="section-heading" id="exp-heading" data-i18n="exp_heading">Experiencia</h2>
+      <div class="section-rule centered"></div>
+    </div>
+
+    <div class="timeline" role="list">
+
+      <!-- 2016 -->
+      <div class="tl-item reveal" role="listitem">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <p class="tl-year">2016</p>
+        <h3 class="tl-role" data-i18n="exp1_role">Inicio en Servicio al Cliente</h3>
+        <p class="tl-company">Empresa ABC</p>
+        <p class="tl-desc" data-i18n="exp1_desc">
+          Gestión de cuentas clave, resolución de incidencias y construcción de procesos de atención al cliente que mejoraron la satisfacción y retención.
+        </p>
+      </div>
+
+      <!-- 2018 -->
+      <div class="tl-item reveal reveal-d1" role="listitem">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <p class="tl-year">2018</p>
+        <h3 class="tl-role" data-i18n="exp2_role">Coordinadora de Logística</h3>
+        <p class="tl-company">Empresa XYZ</p>
+        <p class="tl-desc" data-i18n="exp2_desc">
+          Coordinación de cadena de suministro, gestión de proveedores y optimización de tiempos de entrega en mercados regionales.
+        </p>
+      </div>
+
+      <!-- 2020 -->
+      <div class="tl-item reveal reveal-d2" role="listitem">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <p class="tl-year">2020</p>
+        <h3 class="tl-role" data-i18n="exp3_role">Soporte Comercial Internacional</h3>
+        <p class="tl-company">Global Corp</p>
+        <p class="tl-desc" data-i18n="exp3_desc">
+          Gestión de procesos de exportación, cumplimiento regulatorio y coordinación con equipos multiculturales en América Latina y Europa.
+        </p>
+      </div>
+
+      <!-- 2022 -->
+      <div class="tl-item reveal reveal-d3" role="listitem">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <p class="tl-year">2022</p>
+        <h3 class="tl-role" data-i18n="exp4_role">Analista de Operaciones</h3>
+        <p class="tl-company">TechCo</p>
+        <p class="tl-desc" data-i18n="exp4_desc">
+          Diseño de reportes de inteligencia comercial, análisis de KPIs y construcción de dashboards para equipos de liderazgo.
+        </p>
+      </div>
+
+      <!-- 2024 (current) -->
+      <div class="tl-item tl-current reveal reveal-d4" role="listitem">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <p class="tl-year">
+          2024
+          <span class="tl-badge" data-i18n="exp5_badge">Actual</span>
+        </p>
+        <h3 class="tl-role" data-i18n="exp5_role">Especialización en Analítica</h3>
+        <p class="tl-company" data-i18n="exp5_company">Formación continua · Proyectos independientes</p>
+        <p class="tl-desc" data-i18n="exp5_desc">
+          Profundización en análisis de datos, visualización y frameworks de decisión aplicados a operaciones comerciales y estrategia de negocio.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact" class="section-block" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div class="contact-header reveal">
+        <p class="section-eyebrow" data-i18n="contact_eyebrow">¿Hablamos?</p>
+        <h2 class="section-heading" id="contact-heading" data-i18n="contact_heading">Contacto</h2>
+        <div class="section-rule centered"></div>
+      </div>
+
+      <div class="contact-list">
+
+        <a href="mailto:karen.pineda@email.com"
+           class="contact-row reveal reveal-d1"
+           aria-label="Enviar email a karen.pineda@email.com">
+          <div class="contact-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 7l10 6.5L22 7"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-info-label" data-i18n="contact_lbl_email">Email</p>
+            <p class="contact-info-value">karen.pineda@email.com</p>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/karenpineda"
+           target="_blank" rel="noopener noreferrer"
+           class="contact-row reveal reveal-d2"
+           aria-label="Ver perfil LinkedIn de Karen Pineda (nueva pestaña)">
+          <div class="contact-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <path d="M7 10v7"/>
+              <circle cx="7" cy="7" r=".9" fill="currentColor" stroke="none"/>
+              <path d="M11 17v-3.5a2.5 2.5 0 015 0V17M11 10v7"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-info-label">LinkedIn</p>
+            <p class="contact-info-value">linkedin.com/in/karenpineda</p>
+          </div>
+        </a>
+
+        <a href="tel:+15550000000"
+           class="contact-row reveal reveal-d3"
+           aria-label="Llamar a Karen Pineda: +1 (555) 000-0000">
+          <div class="contact-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.56 21 3 13.44 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-info-label" data-i18n="contact_lbl_phone">Teléfono</p>
+            <p class="contact-info-value">+1 (555) 000-0000</p>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="contact-availability reveal reveal-d4">
+        <span class="avail-dot" aria-hidden="true"></span>
+        <span data-i18n="contact_avail">Abierta a oportunidades remotas e híbridas</span>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <p>
+    <span class="gold">KP</span> &nbsp;·&nbsp;
+    Karen Pineda &nbsp;·&nbsp;
+    <span data-i18n="footer_rights">Todos los derechos reservados</span>
+    &nbsp;© 2024
+  </p>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ─── TRANSLATIONS ─────────────────────────────────────────── */
+  var T = {
+    es: {
+      nav_about:'Sobre mí',nav_services:'Servicios',nav_projects:'Proyectos',
+      nav_experience:'Experiencia',nav_contact:'Contacto',
+      hero_eyebrow:'Operaciones · Analítica · Estrategia',
+      hero_hl_a:'Operaciones Comerciales',hero_hl_b:'Insights Estratégicos',
+      hero_sub:'8+ años transformando datos operativos en decisiones que mueven el negocio',
+      hero_cta:'Hablemos',hero_scroll:'Scroll',
+      about_eyebrow:'Propuesta de Valor',about_heading:'Sobre mí',
+      about_p1:'Combino experiencia en servicio al cliente, logística y exportaciones con una mentalidad analítica para detectar patrones donde otros ven ruido. No solo reporto datos — construyo <strong>frameworks</strong> que convierten <strong>insights en acción</strong>.',
+      about_p2:'Cada proyecto es una oportunidad de traducir <strong>complejidad operativa</strong> en estrategia clara y accionable para equipos y liderazgo.',
+      services_eyebrow:'Especialidades',services_heading:'Servicios',
+      flip_hint:'Hover para ver más',
+      svc1_title:'Analítica Comercial',
+      svc1_back:'Diseño y automatizo reportes de KPIs comerciales, análisis de tendencias y forecasting.',
+      svc1_deliver:'Entregable: dashboards accionables que reducen tiempo de decisión.',
+      svc2_title:'Operaciones',
+      svc2_back:'Optimización de procesos en logística, exportaciones y soporte comercial.',
+      svc2_deliver:'Entregable: SOPs documentados y flujos mejorados.',
+      svc3_back:'Análisis de comportamiento de cliente, segmentación y mapeo de experiencia.',
+      svc3_deliver:'Entregable: estrategias centradas en el cliente con evidencia cuantitativa.',
+      svc4_title:'Frameworks de Decisión',
+      svc4_back:'Estructuro ambigüedad en modelos claros de priorización y análisis.',
+      svc4_deliver:'Entregable: playbooks y matrices de decisión usados por equipos.',
+      proj_eyebrow:'Trabajo Selecto',proj_heading:'Proyectos',
+      p1_title:'Dashboard Comercial',
+      p1_desc:'Diseño e implementación de dashboard interactivo para seguimiento de KPIs comerciales en tiempo real.',
+      p2_title:'Análisis de Exportaciones',
+      p2_desc:'Análisis de flujos de exportación y optimización de procesos de documentación y cumplimiento.',
+      p3_title:'Reporte de Insights',
+      p3_desc:'Automatización de reportes mensuales de insights de cliente con visualizaciones ejecutivas.',
+      proj_link_label:'[Ver proyecto]',
+      exp_eyebrow:'Trayectoria',exp_heading:'Experiencia',
+      exp1_role:'Inicio en Servicio al Cliente',
+      exp1_desc:'Gestión de cuentas clave, resolución de incidencias y construcción de procesos de atención al cliente que mejoraron la satisfacción y retención.',
+      exp2_role:'Coordinadora de Logística',
+      exp2_desc:'Coordinación de cadena de suministro, gestión de proveedores y optimización de tiempos de entrega en mercados regionales.',
+      exp3_role:'Soporte Comercial Internacional',
+      exp3_desc:'Gestión de procesos de exportación, cumplimiento regulatorio y coordinación con equipos multiculturales en América Latina y Europa.',
+      exp4_role:'Analista de Operaciones',
+      exp4_desc:'Diseño de reportes de inteligencia comercial, análisis de KPIs y construcción de dashboards para equipos de liderazgo.',
+      exp5_role:'Especialización en Analítica',exp5_badge:'Actual',
+      exp5_company:'Formación continua · Proyectos independientes',
+      exp5_desc:'Profundización en análisis de datos, visualización y frameworks de decisión aplicados a operaciones comerciales y estrategia de negocio.',
+      contact_eyebrow:'¿Hablamos?',contact_heading:'Contacto',
+      contact_lbl_email:'Email',contact_lbl_phone:'Teléfono',
+      contact_avail:'Abierta a oportunidades remotas e híbridas',
+      footer_rights:'Todos los derechos reservados'
+    },
+    en: {
+      nav_about:'About',nav_services:'Services',nav_projects:'Projects',
+      nav_experience:'Experience',nav_contact:'Contact',
+      hero_eyebrow:'Operations · Analytics · Strategy',
+      hero_hl_a:'Commercial Operations',hero_hl_b:'Strategic Insights',
+      hero_sub:'8+ years turning operational data into decisions that move business forward',
+      hero_cta:"Let's Talk",hero_scroll:'Scroll',
+      about_eyebrow:'Value Proposition',about_heading:'About',
+      about_p1:"I combine customer service, logistics, and export operations experience with an analytical mindset to spot patterns where others see noise. I don't just report data — I build <strong>frameworks</strong> that turn <strong>insights into action</strong>.",
+      about_p2:'Every project is an opportunity to translate <strong>operational complexity</strong> into clear, actionable strategy for teams and leadership.',
+      services_eyebrow:'Specialties',services_heading:'Services',
+      flip_hint:'Hover to learn more',
+      svc1_title:'Commercial Analytics',
+      svc1_back:'I design and automate commercial KPI reports, trend analysis and forecasting.',
+      svc1_deliver:'Deliverable: actionable dashboards that reduce decision time.',
+      svc2_title:'Operations',
+      svc2_back:'Process optimization in logistics, exports and commercial support.',
+      svc2_deliver:'Deliverable: documented SOPs and improved workflows.',
+      svc3_back:'Customer behavior analysis, segmentation, and experience mapping.',
+      svc3_deliver:'Deliverable: customer-centric strategies backed by quantitative evidence.',
+      svc4_title:'Decision Frameworks',
+      svc4_back:'I structure ambiguity into clear prioritization models and analysis frameworks.',
+      svc4_deliver:'Deliverable: playbooks and decision matrices used by teams.',
+      proj_eyebrow:'Selected Work',proj_heading:'Projects',
+      p1_title:'Commercial Dashboard',
+      p1_desc:'Design and implementation of interactive dashboard for real-time commercial KPI tracking.',
+      p2_title:'Export Analysis',
+      p2_desc:'Export flow analysis and optimization of documentation and compliance processes.',
+      p3_title:'Insights Report',
+      p3_desc:'Automation of monthly customer insights reports with executive visualizations.',
+      proj_link_label:'[View project]',
+      exp_eyebrow:'Career Path',exp_heading:'Experience',
+      exp1_role:'Customer Service Start',
+      exp1_desc:'Management of key accounts, issue resolution and building customer service processes that improved satisfaction and retention.',
+      exp2_role:'Logistics Coordinator',
+      exp2_desc:'Supply chain coordination, vendor management and optimization of delivery times in regional markets.',
+      exp3_role:'International Commercial Support',
+      exp3_desc:'Export process management, regulatory compliance and coordination with multicultural teams across Latin America and Europe.',
+      exp4_role:'Operations Analyst',
+      exp4_desc:'Design of commercial intelligence reports, KPI analysis and dashboard building for leadership teams.',
+      exp5_role:'Analytics Specialization',exp5_badge:'Current',
+      exp5_company:'Continuous learning · Independent projects',
+      exp5_desc:'Deep dive into data analysis, visualization and decision frameworks applied to commercial operations and business strategy.',
+      contact_eyebrow:"Let's Talk",contact_heading:'Contact',
+      contact_lbl_email:'Email',contact_lbl_phone:'Phone',
+      contact_avail:'Open to remote and hybrid opportunities',
+      footer_rights:'All rights reserved'
+    }
+  };
+
+  /* ─── LANG TOGGLE ──────────────────────────────────────────── */
+  var lang = 'es';
+  var langBtn = document.getElementById('lang-btn');
+
+  function applyLang(l) {
+    lang = l;
+    var d = T[l];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      var val = d[key];
+      if (val === undefined) return;
+      if (val.indexOf('<') !== -1) { el.innerHTML = val; }
+      else { el.textContent = val; }
+    });
+    document.documentElement.lang = l;
+    langBtn.textContent = l === 'es' ? 'EN' : 'ES';
+    langBtn.setAttribute('aria-label',
+      l === 'es' ? 'Switch language to English' : 'Cambiar idioma a español');
+  }
+
+  langBtn.addEventListener('click', function() {
+    applyLang(lang === 'es' ? 'en' : 'es');
+  });
+
+  /* ─── HAMBURGER / MOBILE DRAWER ────────────────────────────── */
+  var hamburger = document.getElementById('hamburger');
+  var drawer    = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', function() {
+    var isOpen = drawer.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+  });
+
+  document.querySelectorAll('.drawer-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Abrir menú');
+    });
+  });
+
+  /* ─── PARALLAX ─────────────────────────────────────────────── */
+  var parallaxLayer = document.getElementById('parallax-layer');
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    var rafId = null;
+    window.addEventListener('scroll', function() {
+      if (rafId) return;
+      rafId = requestAnimationFrame(function() {
+        if (window.innerWidth >= 768) {
+          parallaxLayer.style.transform = 'translateY(' + (window.scrollY * 0.4) + 'px)';
+        }
+        rafId = null;
+      });
+    }, { passive: true });
+  }
+
+  /* ─── NAV SCROLL SHADOW ─────────────────────────────────────── */
+  var mainNav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() {
+    mainNav.style.background = window.scrollY > 30
+      ? 'rgba(10,10,15,.97)'
+      : 'rgba(10,10,15,.82)';
+  }, { passive: true });
+
+  /* ─── INTERSECTION OBSERVER (REVEAL) ───────────────────────── */
+  if (prefersReduced) {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('in-view');
+    });
+  } else {
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObs.observe(el);
+    });
+  }
+
+  /* ─── FLIP CARDS ────────────────────────────────────────────── */
+  function isMobile() { return window.innerWidth < 768; }
+
+  document.querySelectorAll('.flip-card').forEach(function(card) {
+    var inner = card.querySelector('.flip-card-inner');
+
+    // Touch: toggle on tap (mobile only)
+    var touchMoved = false;
+    card.addEventListener('touchstart', function() { touchMoved = false; }, { passive: true });
+    card.addEventListener('touchmove',  function() { touchMoved = true; },  { passive: true });
+    card.addEventListener('touchend',   function(e) {
+      if (touchMoved) return;
+      if (isMobile()) { e.preventDefault(); inner.classList.toggle('flipped'); }
+    });
+
+    // Keyboard: Enter or Space
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        inner.classList.toggle('flipped');
+      }
+    });
+  });
+
+  window.addEventListener('resize', function() {
+    if (!isMobile()) {
+      document.querySelectorAll('.flip-card-inner').forEach(function(inner) {
+        inner.classList.remove('flipped');
+      });
+    }
+  });
+
+  /* ─── SMOOTH SCROLL ─────────────────────────────────────────── */
+  if (!prefersReduced) {
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var sel = a.getAttribute('href');
+        if (sel === '#') return;
+        var target = document.querySelector(sel);
+        if (!target) return;
+        e.preventDefault();
+        var navH = parseInt(getComputedStyle(document.documentElement)
+          .getPropertyValue('--nav-h')) || 64;
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - navH,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+
+}());
+</script>
+</body>
+</html>
